@@ -155,6 +155,8 @@ app.post("/createUser", (request, response) => {
 
 ///// STATEMENTS NEEDED
 
+// add review
+// get all reviews under one item
 // search for review by user under specific item
 
 // check if email is in use
