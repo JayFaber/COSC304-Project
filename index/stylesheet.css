@@ -1,6 +1,5 @@
 /* 
-This is a mess
-No time to clean it up
+I am ready to die -Simon
 */
 
 #bodyContainer {
@@ -220,6 +219,13 @@ No time to clean it up
   height: 500px;
   width: 15%;
 }
+
+/* 
+For a while here, the only measurements I wanted to use were vh and vw
+Bad idea
+
+This is also about where I abandon the dream of keeping this organized
+*/
 
 .ibox {
   background-color: rgb(250, 250, 250);
@@ -504,4 +510,42 @@ a {
 .revBox p{
   border-bottom: 2px solid rgba(255, 255, 255, 0.247);
   
+}
+
+#loginBox {
+  border-radius: 2vh;
+  filter: drop-shadow(rgba(0, 0, 0, 0.25) 0rem 0rem 2rem);
+  height: 80%;
+  width: 45%;
+
+  position: relative;
+  margin: auto;
+  padding-top: 7%;
+
+
+
+  background-color: rgb(255, 255, 255);
+}
+
+#loginHeader {
+
+
+  font-variant: small-caps;
+  font-size: 300%;
+
+  top: 10vh;
+
+}
+
+#loginBox p {
+  font-size: large;
+  margin-bottom: 5px;
+}
+
+.logInput {
+  margin: auto;
+
+
+  position: relative;
+  display: block;
 }

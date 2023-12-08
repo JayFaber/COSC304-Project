@@ -5,25 +5,25 @@ let index = sessionStorage.getItem("");
 if (!index > 0) window.location.href = "http://localhost:3000/404.html"
 
 fetch(nodeUrl + "/itemRev", {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        index: index
-    }),
-})
-.then(response => response.json())
-.then(data => {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            index: index
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
 
-    data.forEach(function (item) {
-        writeReview(item);
+        data.forEach(function (item) {
+            writeReview(item);
+        });
+
+    })
+    .catch((error) => {
+        console.error('error:', error);
     });
-    
-})
-.catch((error) => {
-    console.error('error:', error);
-});
 
 fetch(nodeUrl + "/itemInfo", {
         method: 'POST',
@@ -40,24 +40,43 @@ fetch(nodeUrl + "/itemInfo", {
     })
     .catch((error) => {
         console.error('error:', error);
-});
+    });
 
-function writePage(item){
+function writePage(item) {
     document.getElementById('itemTitleBox').innerHTML += item.name;
     document.getElementById('itemImageBox').innerHTML += '<img src = "Images/' + item.image_name + '">';
     document.getElementById('itemDescBox').innerHTML += item.description;
-    document.getElementById('itemCost').innerHTML += '<p>' +item.cost + '</p>';
+    document.getElementById('itemCost').innerHTML += '<p>' + item.cost + '</p>';
 }
 
-function postReview(){
+function postReview() {
+    // TODO AFTER LOGIN
+    data = []
+    fetch(nodeUrl + "/postReview", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                data: data
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            writeReview(data);
+        })
+        .catch((error) => {
+            console.error('error:', error);
+        });
+
     var inputElement = document.getElementById("review");
 
-      var inputValue = inputElement.value;
+    var inputValue = inputElement.value;
 
-      console.log(inputValue);
+    console.log(inputValue);
 }
 
-function writeReview(item){
+function writeReview(item) {
     //PLACEHOLDER 
     //REPLACE VALUES
     const content = `

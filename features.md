@@ -18,30 +18,29 @@ x page header with menu
 # Product Details Page
 ## 2 points
 x item description
-- image from database
+! image from database
 
 # User Accounts
 # 12 points
-- create account page
-- edit account details
-- login/logout
-- register user / forgot password email
-- page listing all users
+! create account page
+! edit account details
+! login/logout
+! register user / forgot password email
+! page listing all users
 
 # Product Reviews
 ## 5 points
-- enter review on product
-- display product review on detail page
-- restrict to one review/person/item
+! enter review on product
+x display product review on detail page
+! restrict to one review/person/item
 
 # General
 ## 5 points
 x User interface
 
-### TOTAL 52
-### DONE 10
-
-
+### TOTAL POINTS 52
+x: done             12
+!: in progress      18
 
 
 

@@ -1,1 +1,0 @@
-SELECT * FROM (SELECT * FROM pizza UNION ALL SELECT * FROM drink UNION ALL SELECT * FROM dessert) AS combine OUTER JOIN item ON item.item_id = combine.item_id WHERE item.item_id =1;

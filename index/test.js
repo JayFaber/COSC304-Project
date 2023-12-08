@@ -22,6 +22,8 @@ app.use(express.json({
 
 app.use(cors());
 
+// REWRITE GET ID OF ITEM THAT MATCHES INDEX
+// SEE POST REQUESTS AT BOTTOM FOR CORRECT SYNTAX
 app.get("/search", (request, response) => {
     const query = "SELECT pizza.name AS name, item_id FROM pizza UNION ALL SELECT drink.name AS name, item_id FROM drink UNION ALL SELECT dessert.name AS item_name, item_id FROM dessert";
 
@@ -36,7 +38,7 @@ app.get("/search", (request, response) => {
 });
 
 app.get("/pizzaInfo", (request, response) => {
-    const query = "SELECT name, description, cost, item.item_id,image_name FROM pizza JOIN item ON pizza.item_id = item.item_id;";
+    const query = "SELECT * FROM pizza JOIN item ON pizza.item_id = item.item_id;";
 
     con.query(query, (err, results) => {
         if (err) {
@@ -50,7 +52,7 @@ app.get("/pizzaInfo", (request, response) => {
 });
 
 app.get("/drinkInfo", (request, response) => {
-    const query = "SELECT name, description, cost, item.item_id,image_name FROM drink JOIN item ON drink.item_id = item.item_id;";
+    const query = "SELECT * FROM drink JOIN item ON drink.item_id = item.item_id;";
 
     con.query(query, (err, results) => {
         if (err) {
@@ -64,7 +66,7 @@ app.get("/drinkInfo", (request, response) => {
 });
 
 app.get("/dessertInfo", (request, response) => {
-    const query = "SELECT name, description, cost, item.item_id,image_name FROM dessert JOIN item ON dessert.item_id = item.item_id;";
+    const query = "SELECT * FROM dessert JOIN item ON dessert.item_id = item.item_id;";
 
     con.query(query, (err, results) => {
         if (err) {
@@ -77,6 +79,7 @@ app.get("/dessertInfo", (request, response) => {
     });
 });
 
+// Get all from item matching item_id
 app.post("/itemInfo", (request, response) => {
     const index = request.body.index;
 
@@ -94,6 +97,7 @@ app.post("/itemInfo", (request, response) => {
     });
 });
 
+// Get data from review
 app.post("/itemRev", (request, response) => {
     const index = request.body.index;
 
@@ -110,5 +114,39 @@ app.post("/itemRev", (request, response) => {
             return;
         }
         response.json(results);
+    });
+});
+
+// Post a review to the server
+app.post("/postReview", (request, response) => {
+    const data = request.body;
+
+    // Parametrized
+    // REWRITE ASSUME FREE ACCESS TO user_id AND item_id
+    const query = "INSERT INTO review (user_id, item_id, username, text) VALUES (?, ?, ?, ?)";
+    
+    con.query(query, [data.username, data.password, data.email, data.name, data.address], (err, result) => {
+        if (err) {
+            console.error(err);
+            response.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        response.json({ message: 'User created successfully', insertedId: result.insertId });
+    });
+});
+
+app.post("/createUser", (request, response) => {
+    const data = request.body;
+
+    // Parametrized
+    const query = "INSERT INTO User (username, password, email, name, address) VALUES (?, ?, ?, ?, ?)";
+    
+    con.query(query, [data.username, data.password, data.email, data.name, data.address], (err, result) => {
+        if (err) {
+            console.error(err);
+            response.status(500).json({ error: 'Internal Server Error' });
+            return;
+        }
+        response.json({ message: 'User created successfully', insertedId: result.insertId });
     });
 });
