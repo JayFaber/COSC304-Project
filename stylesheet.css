@@ -7,17 +7,18 @@ No time to clean it up
   background-color: white;
 
   margin: 0;
-  padding: 15%;
+  padding: 10%;
   padding-top: 0;
 
   overflow: hidden;
 }
 
-#contentContainer {
+.contentContainer {
   background-color: whitesmoke;
 
   margin: 2%;
   padding: 10%;
+  padding-bottom: 3%;
   padding-top: 3%;
 
   overflow: hidden;
@@ -27,7 +28,7 @@ No time to clean it up
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(105, 77, 87, 0.73)), url(Images/title_main.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center; 
+  background-position: center;
 
   height: 420px;
 
@@ -199,7 +200,6 @@ No time to clean it up
   position: relative;
   height: 200px;
   overflow: hidden
-
 }
 
 .cBoxText {
@@ -207,7 +207,7 @@ No time to clean it up
   font-size: 200px;
   color: rgb(32, 27, 27);
 
-margin-top: 4%;
+  margin-top: 4%;
   left: 25vw;
 
   position: absolute;
@@ -236,7 +236,7 @@ margin-top: 4%;
 
 }
 
-.ibox img{
+.ibox img {
   border-radius: 0.5vh;
   width: 20vw;
   height: 24vh;
@@ -246,36 +246,37 @@ margin-top: 4%;
 
   position: relative;
 
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .iboxText {
   text-align: center;
-  font-weight:500;
+  font-weight: 500;
   font-size: x-large;
   margin-bottom: 1%;
 }
-.iBoxDescText{
+
+.iBoxDescText {
   text-align: center;
   margin-left: 3vw;
   margin-right: 3vw;
   font-size: large;
 }
 
-.orderButton{
+.orderButton {
   transition: background-color 0.3s ease;
 
   margin-left: 7vw;
   margin-right: 7vw;
-  
+
   width: 10vw;
   height: 3vh;
   font-size: 2.3vh;
   background-color: rgb(255, 255, 255);
 }
 
-a > .orderButton:hover{
-  background-color: rgb(255, 209, 108);
+.orderButton:hover {
+  background-color: rgb(255, 240, 175);
 }
 
 a {
@@ -287,7 +288,7 @@ a {
   text-decoration: none;
 }
 
-#menuTitle{
+#menuTitle {
   border-bottom: 2px solid rgba(230, 227, 227, 0.76);
   margin: auto;
   padding: 5%;
@@ -297,10 +298,33 @@ a {
   overflow: hidden;
   z-index: 0;
 }
-#menuTitleText{
+
+#menuTitleText {
   padding-top: 3.5vh;
   text-align: center;
   font-size: 10vh;
   color: rgb(32, 27, 27);
-  
+
+}
+
+.menuCardText {
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: -1vh;
+  font-size: 6vh;
+  color: rgb(32, 27, 27);
+}
+
+#bottomBar {
+  color: white;
+  background-color: rgb(58, 56, 56);
+
+  height: 5vh;
+  position: relative;
+}
+#bottomBar p {
+  color: white;
+  padding-top: 1vh;
+  padding-left: 10px;
+
 }
