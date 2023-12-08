@@ -1,0 +1,1 @@
+Text descriptions generated using ChatGPT

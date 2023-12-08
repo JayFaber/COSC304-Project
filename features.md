@@ -1,8 +1,8 @@
 # Main Page  
 ## 5 Points   
 x search by name
-- browse by category
-- list products with image
+x browse by category
+x list products with image
 x page header with menu
 - show current logged in user
 
@@ -17,7 +17,7 @@ x page header with menu
 
 # Product Details Page
 ## 2 points
-- item description
+x item description
 - image from database
 
 # User Accounts
@@ -39,7 +39,7 @@ x page header with menu
 x User interface
 
 ### TOTAL 52
-### DONE 7
+### DONE 10
 
 
 
