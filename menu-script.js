@@ -2,6 +2,8 @@ const nodeUrl = "http://localhost:3001";
 
 getPizzaData();
 getDrinkData();
+getDessertData();
+
 
 function getPizzaData() {
 
@@ -39,6 +41,28 @@ function getDrinkData() {
 
             data.forEach(function (item) {
                 writeItemBox(item, "drinkContainer");
+            });
+
+        })
+        .catch((error) => {
+            console.error('error:', error);
+        });
+}
+
+function getDessertData() {
+
+    fetch(nodeUrl + "/dessertInfo", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success!:', data);
+
+            data.forEach(function (item) {
+                writeItemBox(item, "dessertContainer");
             });
 
         })
