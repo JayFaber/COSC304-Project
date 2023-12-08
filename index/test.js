@@ -24,6 +24,7 @@ app.use(cors());
 
 // REWRITE GET ID OF ITEM THAT MATCHES INDEX
 // SEE POST REQUESTS AT BOTTOM FOR CORRECT SYNTAX
+// MUST BE PARAMETRIZED 
 app.get("/search", (request, response) => {
     const query = "SELECT pizza.name AS name, item_id FROM pizza UNION ALL SELECT drink.name AS name, item_id FROM drink UNION ALL SELECT dessert.name AS item_name, item_id FROM dessert";
 
