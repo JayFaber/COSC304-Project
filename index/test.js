@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require('mysql2');
 const cors = require('cors'); 
+const parse = require('body-parser')
 
 const con = mysql.createConnection({
     host: "localhost",
@@ -12,6 +13,7 @@ const con = mysql.createConnection({
 
 const app = express();
 app.listen(3001, () => console.log("listening at 3001"));
+app.use(parse.json());
 app.use(express.static("public"));
 
 app.use(express.json({
@@ -21,13 +23,12 @@ app.use(express.json({
 app.use(cors());
 
 app.get("/search", (request, response) => {
-    const query = "SELECT name, item_id FROM pizza UNION ALL SELECT name, item_id FROM drink;";
+    const query = "SELECT pizza.name AS name, item_id FROM pizza UNION ALL SELECT drink.name AS name, item_id FROM drink UNION ALL SELECT dessert.name AS item_name, item_id FROM dessert";
 
     con.query(query, (err, results) => {
         if (err) {
             console.error(err);
             response.status(500).send("Internal Server Error");
-            return;
         }
 
         response.json(results);
@@ -76,15 +77,14 @@ app.get("/dessertInfo", (request, response) => {
     });
 });
 
-app.post("/", (request, response) => {
-    const searchString = request.body.searchString;
+app.post("/itemInfo", (request, response) => {
+    const index = request.body.index;
 
-    const query = "SELECT name, item_id FROM Pizza";
-
+    const query = "SELECT * FROM (SELECT * FROM pizza UNION ALL SELECT * FROM drink UNION ALL SELECT * FROM dessert) AS combine JOIN item ON item.item_id = combine.item_id WHERE item.item_id =" + index + ";";
 
     console.log("Query:", query);
 
-    con.query(query, params, (err, results) => {
+    con.query(query, (err, results) => {
         if (err) {
             console.error(err);
             response.status(500).send("Internal Server Error");

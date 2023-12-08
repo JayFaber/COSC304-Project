@@ -24,7 +24,6 @@ CREATE TABLE `Order` (
 -- Create Item table
 CREATE TABLE Item (
     item_id INT PRIMARY KEY,
-    item_name VARCHAR(255),
     inventory INT,
     cost DECIMAL(10, 2),
     image_name VARCHAR(255)

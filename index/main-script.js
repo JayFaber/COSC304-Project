@@ -4,6 +4,7 @@ const nodeUrl = "http://localhost:3001";
 // This is an bad function
 const button = document.getElementById("hateButton");
 button.addEventListener("click", async (event) => {
+    console.log("AAAAAAAAAA")
     const input = document.getElementById("searchInput").value;
 
     await fetch(nodeUrl + "/search", {
@@ -21,9 +22,12 @@ button.addEventListener("click", async (event) => {
             if (foundItem) {
                 console.log('Found match:', foundItem);
 
-                newPage = "http://localhost:3000/item" + foundItem.item_id + ".html"
+                newPage = "http://localhost:3000/index/item.html"
+                sessionStorage.clear();
+                sessionStorage.setItem("", foundItem.item_id);
+
                 window.location.href = newPage;
-            } else window.location.href = "http://localhost:3000/404.html";
+            } else window.location.href = "index/404.html";
         })
 
         .catch((error) => {
