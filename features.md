@@ -41,11 +41,3 @@ x User interface
 ### TOTAL POINTS 52
 x: done             12
 !: in progress      18
-
-
-
-
-
-
-
-

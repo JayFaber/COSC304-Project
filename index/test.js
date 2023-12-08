@@ -151,3 +151,29 @@ app.post("/createUser", (request, response) => {
         response.json({ message: 'User created successfully', insertedId: result.insertId });
     });
 });
+
+
+///// STATEMENTS NEEDED
+
+// search for review by user under specific item
+
+// check if email is in use
+// search for username and password with email
+// search for user with username and password
+
+
+// delete user with user id
+// edit account details with user_id and password  
+//      change name
+//      change password
+//      change username
+//      change email
+//      change address
+
+// get cart items
+// add to cart
+// update quantity in cart
+// delete one from cart
+// delete all
+
+// search for coupon using coupon code
