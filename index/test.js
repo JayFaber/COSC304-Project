@@ -93,3 +93,22 @@ app.post("/itemInfo", (request, response) => {
         response.json(results);
     });
 });
+
+app.post("/itemRev", (request, response) => {
+    const index = request.body.index;
+
+    // PLACEHOLDER: NEED THIS QUERY!!!!!!!
+    // SELECT ALL REVIEWS WHERE index = item_id
+    const query = "SELECT * FROM Pizza";
+
+    console.log("Query:", query);
+
+    con.query(query, (err, results) => {
+        if (err) {
+            console.error(err);
+            response.status(500).send("Internal Server Error");
+            return;
+        }
+        response.json(results);
+    });
+});

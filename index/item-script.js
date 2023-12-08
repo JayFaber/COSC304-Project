@@ -4,6 +4,27 @@ let index = sessionStorage.getItem("");
 
 if (!index > 0) window.location.href = "http://localhost:3000/404.html"
 
+fetch(nodeUrl + "/itemRev", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        index: index
+    }),
+})
+.then(response => response.json())
+.then(data => {
+
+    data.forEach(function (item) {
+        writeReview(item);
+    });
+    
+})
+.catch((error) => {
+    console.error('error:', error);
+});
+
 fetch(nodeUrl + "/itemInfo", {
         method: 'POST',
         headers: {
@@ -34,4 +55,16 @@ function postReview(){
       var inputValue = inputElement.value;
 
       console.log(inputValue);
+}
+
+function writeReview(item){
+    //PLACEHOLDER 
+    //REPLACE VALUES
+    const content = `
+    <div class="revBox">
+        <p> USER </br> AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+    </div>
+`;
+
+    document.getElementById("itemReviews").innerHTML += content;
 }
