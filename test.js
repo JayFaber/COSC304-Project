@@ -23,8 +23,6 @@ app.use(cors());
 app.get("/search", (request, response) => {
     const query = "SELECT name, item_id FROM pizza UNION ALL SELECT name, item_id FROM drink;";
 
-    console.log("Query:", query);
-
     con.query(query, (err, results) => {
         if (err) {
             console.error(err);
@@ -53,7 +51,19 @@ app.get("/pizzaInfo", (request, response) => {
 app.get("/drinkInfo", (request, response) => {
     const query = "SELECT name, description, cost, item.item_id,image_name FROM drink JOIN item ON drink.item_id = item.item_id;";
 
+    con.query(query, (err, results) => {
+        if (err) {
+            console.error(err);
+            response.status(500).send("Internal Server Error");
+            return;
+        }
 
+        response.json(results);
+    });
+});
+
+app.get("/dessertInfo", (request, response) => {
+    const query = "SELECT name, description, cost, item.item_id,image_name FROM dessert JOIN item ON dessert.item_id = item.item_id;";
 
     con.query(query, (err, results) => {
         if (err) {
