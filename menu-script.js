@@ -1,10 +1,5 @@
 const nodeUrl = "http://localhost:3001";
 
-getPizzaData();
-getDrinkData();
-getDessertData();
-
-
 function getPizzaData() {
 
     fetch(nodeUrl + "/pizzaInfo", {
