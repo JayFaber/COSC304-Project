@@ -8,7 +8,7 @@
 
 </head>
 
-<body style="margin: 0;">
+<body style="margin: 0;height: 100%; overflow: hidden">
     <div id="topBar">
         <div class="navButton">
             <a href="main.html">item</a>
@@ -76,12 +76,22 @@
         </div>
 
     </div>
-    <div class=id="itemReviews"></div>
+    <div class="itemReviews">
+        <div id="eReview">
+
+            <input id="review">
+            </input>
+
+            <button onclick="postReview()" class="navButton" id="enterReview">
+                Enter Review
+            </button>
+        </div>
+    </div>
 
 
     </div>
 
-    <div id="bottomBar">
+    <div id="bottomBar" style="bottom: 38vh;">
         <p>Made by Simon Spoor and Jay Faber</p>
     </div>
     <script src="item-script.js"></script>

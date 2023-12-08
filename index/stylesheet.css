@@ -331,17 +331,20 @@ a {
 }
 
 #itemView {
-  background-color: wheat;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.12)),
+  url(Images/background_hedge.jpg);
   height: 60vh;
   width: 80vw;
 
   position: relative;
   top: 10vh;
+  margin-bottom: 0px;
 
 
   padding: 10vh;
 }
 #itemViewInner{
+  filter: drop-shadow(rgba(26, 3, 3, 0.4) 0rem 0rem 2rem);
   background-color: rgb(250, 250, 250);
   border-radius: 2vw;
   height: 60vh;
@@ -352,14 +355,12 @@ a {
   border-width: 5px;
   border-color: #7a737352;
   border-radius: 1vw;
+  height: 20vh;
   width: 32vw;
-  height: 24vh;
-  top: 3.5vh;
-  left: 1vw;
+  left: 25vw;
+  top: 8vh;
 
-
-  margin: auto;
-  position: relative;
+  position: absolute;
   overflow: hidden;
 }
 
@@ -368,13 +369,13 @@ a {
   filter: drop-shadow(rgba(26, 3, 3, 0.116) 0.5rem 0.5rem 0.5rem);
   height: 20vh;
   width: 32vw;
-  left: 30.54vw;
-  top: 40vh;
+  left: 25vw;
+  top: 32vh;
   position: absolute;
 }
 
 #itemTitleBox {
-  font-size: 9vh;
+  font-size: 7vh;
   margin-left: 15px;
 
 }
@@ -402,7 +403,7 @@ a {
   width: 35vh;
   
   position: relative;
-  top: -60.2vh;
+  top: -57.5vh;
   left: 65vw;
 
 }
@@ -419,15 +420,7 @@ a {
 }
 
 
-#itemReviews{
-  background-color: red;
 
-  position:relative;
-
-  height: 300px;
-  width: 200;
-  z-index: 1;
-}
 
 .payButton {
   font-size: xx-large;
@@ -456,4 +449,42 @@ a {
   margin: auto;
   position: relative;
   width: 80%;
+}
+
+.itemReviews{
+  background-color: rgb(255, 255, 255);
+  border-radius: 1vh;
+  
+  position:absolute;
+
+  height: 60vh;
+  left: 4vw;
+  width: 25vw;
+  top: 20vh;
+  z-index: 1;
+  overflow: scroll;
+}
+
+#eReview{
+  filter: drop-shadow(rgba(26, 3, 3, 0.5) 0rem 0rem 0.3rem);
+  position: relative;
+  background-color: rgb(252, 252, 252);
+  height: 200px;
+  padding: 20px;
+}
+#eReview button{
+  position: relative;
+  top: 40%;
+  left: 7%;
+ font-size: 20px;
+ margin-bottom: 1px;
+}
+#eReview input{
+  position: relative;
+
+  height: 80%;
+  width: 12vw;
+  vertical-align: top;
+  text-align: left;
+
 }

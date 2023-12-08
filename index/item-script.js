@@ -28,3 +28,10 @@ function writePage(item){
     document.getElementById('itemCost').innerHTML += '<p>' +item.cost + '</p>';
 }
 
+function postReview(){
+    var inputElement = document.getElementById("review");
+
+      var inputValue = inputElement.value;
+
+      console.log(inputValue);
+}
