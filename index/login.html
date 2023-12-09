@@ -11,7 +11,7 @@
 <body style="margin: 0;">
     <div id="topBar">
         <div class="navButton">
-            <a href="main.html">item</a>
+            <a href="main.html">Homepage</a>
         </div>
 
         <div class="navButton">
@@ -21,42 +21,33 @@
         <div class="navButton">
             <a href="">Deals</a>
         </div>
-        <div class="navButton" id="searchContainer">
+        <div id="userContain"></div>
+        <div class="navButton" id="searchContainer" style="position:relative; float:right">
             <input type="text" id="searchInput" placeholder="Search...">
             <button id="hateButton">Search</button>
         </div>
 
-        <div class="navButton" style="margin-right: 3%; margin-left: auto">
-            <a href="login.html">Login/Signin</a>
+        <div  class="navButton" style="float:right">
+            <a id = "loginNavButton" href="login.html"></a>
         </div>
 
     </div>
 
 
 
+
     <div class="bodyContainer" style="padding-top: 2%;">
         <div class="contentContainer" style="filter: drop-shadow(rgba(26, 3, 3, 0.05) 0.5rem 0.5rem 1rem);">
-            <div class="contentBox" style="filter: drop-shadow(rgba(26, 3, 3, 0.05) 0.5rem 0.5rem 1rem);padding-top:100px; padding-bottom: 100px">
-
+            <div class="contentBox"
+                style="filter: drop-shadow(rgba(26, 3, 3, 0.05) 0.5rem 0.5rem 1rem);padding-top:100px; padding-bottom: 100px">
                 <div id="loginBox">
-                    <div id="loginHeader">
-                        <u>Login</u>
-                    </div>
-                    <p>
-                        Username
-                    </p>
-                    <input class="logInput" id="usernameInput">
-                    </input>
-                    
-                    <p>
-                        Password
-                    </p>
-                    <input class="logInput" id="passwordInput">
-                    </input>
-                    <button id = "loginButton">
-                        log in
+                    <input id = "setEmail" placeholder="Email">
+                    <input id = "setName" placeholder="Name">
+                    <input id = "setAddress" placeholder="Address">
+                    <input id = "setPass" placeholder="Password">
+                    <button>
+                        
                     </button>
-
                 </div>
             </div>
         </div>
@@ -66,5 +57,6 @@
         <p>Made by Simon Spoor and Jay Faber</p>
     </div>
 
-    <script src="menu-script.js"></script>
+    <script src="login.js"></script>
+
 </body>

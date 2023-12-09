@@ -1,5 +1,7 @@
 const nodeUrl = "http://localhost:3001";
 
+let index = sessionStorage.getItem("");
+
 let x = document.cookie;
 console.log(x)
 
@@ -16,6 +18,7 @@ function getCookie(name) {
     return null;
 }
 
+const idString = getCookie("id");  
 
 if (x.includes("id")) {
 
@@ -55,7 +58,7 @@ if (x.includes("id")) {
 
     const tryLogin = document.getElementById("loginButton")
 
-} else{
+} else {
     loginNavButton.setAttribute('href', 'login.html');
     loginNavButton.removeAttribute('onclick');
     loginNavButton.innerHTML = 'Login/Signin';
@@ -63,44 +66,65 @@ if (x.includes("id")) {
 
 function clearId() {
     document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-    document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     let x = document.cookie;
     console.log(x)
     
     location.reload();
 }
 
-// Yes I should have used Poll instead of Get
-// This is an bad function
-const button = document.getElementById("hateButton");
-button.addEventListener("click", async (event) => {
-    const input = document.getElementById("searchInput").value;
+document.addEventListener('DOMContentLoaded', function() {
+    const cartContainer = document.getElementById("aaa");
+    getCart();
 
-    await fetch(nodeUrl + "/search", {
-            method: 'GET',
+    function getCart() {
+        fetch(nodeUrl + "/getCart", {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({
+                id: getCookie("id")
+            }),
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Success!:', data);
-            //Only matches direct hits, but I didn't have time for a better search function
-            // At least it protects against injections
-            const foundItem = data.find(item => item.name.toLowerCase().slice(0, 5) === input.toLowerCase().slice(0, 5));
-            if (foundItem) {
-                console.log('Found match:', foundItem);
+            console.log(data);
 
-                newPage = "http://localhost:3000/index/item.html"
-                sessionStorage.clear();
-                sessionStorage.setItem("", foundItem.item_id);
+            const div = 'aaa'; 
+            
+            data.forEach(item => {
+                document.getElementById(div).innerHTML = '<button onclick="decrement('+item.item_id+')">-1</button>';
+                console.log(item);
 
-                window.location.href = newPage;
-            } else window.location.href = "index/404.html";
+                const itemDiv = document.createElement('div');
+                itemDiv.innerHTML = JSON.stringify(item);
+                document.getElementById(div).appendChild(itemDiv);
+            });
         })
-
         .catch((error) => {
-            console.error('HATE LIFE:', error);
+            console.error('Error fetching cart data:', error);
         });
+    }
 });
 
+function decrement(int){
+    fetch(nodeUrl + "/removeFromCart", {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            item_id:int,
+            id: getCookie("id"),
+            quantityToRemove: 1,
+        }),
+    })
+    .then(data => {
+        location.reload()
+    })
+    .catch((error) => {
+        console.error('error:', error);
+    });
+
+}

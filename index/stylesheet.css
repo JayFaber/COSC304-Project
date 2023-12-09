@@ -180,8 +180,8 @@ I am ready to die -Simon
 }
 
 #searchContainer {
-  margin: auto;
-  margin-left: 58%;
+
+  margin-left: 60%;
 
 }
 
@@ -527,9 +527,11 @@ a {
   background-color: rgb(255, 255, 255);
 }
 
+/*
+Realized that vh and vw are not the best measurements for everything
+*/
+
 #loginHeader {
-
-
   font-variant: small-caps;
   font-size: 300%;
 
@@ -548,4 +550,48 @@ a {
 
   position: relative;
   display: block;
+}
+
+#loginBox a{
+ display: block;
+ color: #1d1b1b;
+}
+
+#loginButton {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+#loginPopupContainer {
+
+height: 48%;
+width: 80%;
+margin: auto;
+margin-top: 10px;
+
+display: block;
+position: relative;
+}
+
+#loginPopupContainer input {
+  width: 46%;
+  margin: 5px;
+}
+
+#forgotPassword{
+  
+  background: none!important;
+  border: none;
+  padding: 0!important;
+
+  cursor: pointer;
+}
+
+
+#signup {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+
+  cursor: pointer;
 }

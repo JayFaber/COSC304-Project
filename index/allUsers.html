@@ -1,0 +1,31 @@
+<head>
+    <title>For Testing Purposes Only</title>
+</head>
+<body>
+    <div id="listAll"></div>
+
+<script>
+    const nodeUrl = "http://localhost:3001";
+        fetch(nodeUrl + "/allUser", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success!:', data);
+    
+                data.forEach(function (item) {
+                    console.log(item)
+                    document.getElementById("listAll").innerHTML += item.user_id + ", " + item.password + ", " + item.email + ", " + item.name + ", " + item.address + "<br>";
+                });
+    
+            })
+            .catch((error) => {
+                console.error('error:', error);
+            });
+    
+    
+</script>
+</body>

@@ -4,40 +4,37 @@ x search by name
 x browse by category
 x list products with image
 x page header with menu
-- show current logged in user
+x show current logged in user
 
 # Shopping Cart
 ## 8 points
-- add to shopping cart
-- remove from shopping cart
-- view shopping cart
-- update quantity
-- user interface
-- cart stored between sessions
+x add to shopping cart
+x remove from shopping cart
+x view shopping cart
+x update quantity
+x user interface
+x cart stored between sessions
 
 # Product Details Page
 ## 2 points
 x item description
-! image from database
+x image from database
 
 # User Accounts
 # 12 points
-! create account page
-! edit account details
-! login/logout
-! register user / forgot password email
-! page listing all users
+x create account page
+x edit account details
+x login/logout
+- register user / forgot password email
+x page listing all users
 
 # Product Reviews
 ## 5 points
-! enter review on product
+x enter review on product
 x display product review on detail page
-! restrict to one review/person/item
+x restrict to one review/person/item
 
 # General
 ## 5 points
 x User interface
 
-### TOTAL POINTS 52
-x: done             12
-!: in progress      18

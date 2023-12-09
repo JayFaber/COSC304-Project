@@ -1,5 +1,76 @@
 const nodeUrl = "http://localhost:3001";
 
+let x = document.cookie;
+console.log(x)
+
+
+
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.split('=').map(part => part.trim());
+        if (cookieName === name) {
+            return cookieValue;
+        }
+    }
+    return null;
+}
+
+
+if (x.includes("id")) {
+
+    if (!getCookie("id")) {
+        // If "id" cookie is undefined, delete it and reload the page
+        document.cookie = 'id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        location.reload();
+    }
+
+    loginNavButton.setAttribute('onclick', 'clearId()');
+    loginNavButton.removeAttribute('href');
+    loginNavButton.innerHTML = 'Logout';
+
+
+
+    fetch(nodeUrl + "/getUserName", {
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: getCookie("id")
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            document.getElementById("userContain").innerHTML = "User: " + data[0].name;
+            document.getElementById("userContain").innerHTML = "<button id='deleteUser' onclick='delUser()'>Delete Account</button>";
+        })
+        .catch((error) => {
+            console.error('error:', error);
+        });
+
+
+
+    const tryLogin = document.getElementById("loginButton")
+
+} else {
+ 
+    loginNavButton.setAttribute('href', 'login.html');
+    loginNavButton.removeAttribute('onclick');
+    loginNavButton.innerHTML = 'Login/Signin';
+}
+
+function clearId() {
+    document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+    let x = document.cookie;
+    console.log(x)
+    
+    location.reload();
+}
+
 function getPizzaData() {
 
     fetch(nodeUrl + "/pizzaInfo", {
@@ -63,7 +134,7 @@ function getDessertData() {
         })
         .catch((error) => {
             console.error('error:', error);
-        });
+        }); 
 }
 
 function writeItemBox(item, div) {
@@ -71,11 +142,11 @@ function writeItemBox(item, div) {
     const content = `
     <div class="ibox">
         <div class="iboxText">${item.name}</div>
-        <img src="Images/${item.image_name}" alt="${item.name}">
+        <img src="data:image/png;base64,${item.image_name}" alt="${item.name}">
         <div class="iBoxDescText">${item.description}<br>$${item.cost}</div>
-        <button item_id="${item.item_id}" class= "orderButton" type="button">Order</button>
+        <button item_id="${item.item_id}" class="orderButton" type="button">Order</button>
     </div>
-`;
+    `;
 
     document.getElementById(div).innerHTML += content;
 }
