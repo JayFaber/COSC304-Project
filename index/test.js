@@ -1,6 +1,6 @@
 const express = require("express");
 const mysql = require('mysql2');
-const cors = require('cors'); 
+const cors = require('cors');
 const parse = require('body-parser')
 
 const con = mysql.createConnection({
@@ -125,15 +125,41 @@ app.post("/postReview", (request, response) => {
     // Parametrized
     // REWRITE ASSUME FREE ACCESS TO user_id AND item_id
     const query = "INSERT INTO review (user_id, item_id, username, text) VALUES (?, ?, ?, ?)";
-    
+
     con.query(query, [data.username, data.password, data.email, data.name, data.address], (err, result) => {
         if (err) {
             console.error(err);
-            response.status(500).json({ error: 'Internal Server Error' });
+            response.status(500).json({
+                error: 'Internal Server Error'
+            });
             return;
         }
-        response.json({ message: 'User created successfully', insertedId: result.insertId });
+        response.json({
+            insertedId: result.insertId
+        });
     });
+});
+
+app.post("/tryLogin", (request, response) => {
+    const data = request.body;
+
+    // Parametrized
+    const query = "SELECT * FROM user WHERE username = ? AND password = ?";
+
+    con.query(query, [data.username, data.password], (err, result) => {
+        if (err) {
+            console.error(err);
+            response.status(500).json({
+                error: 'Internal Server Error'
+            });
+        }
+        console.log(result)
+
+        if (Object.keys(result).length === 0) response.json({
+            0: 0
+        });
+        else response.json(result);
+    })
 });
 
 app.post("/createUser", (request, response) => {
@@ -141,14 +167,19 @@ app.post("/createUser", (request, response) => {
 
     // Parametrized
     const query = "INSERT INTO User (username, password, email, name, address) VALUES (?, ?, ?, ?, ?)";
-    
+
     con.query(query, [data.username, data.password, data.email, data.name, data.address], (err, result) => {
         if (err) {
             console.error(err);
-            response.status(500).json({ error: 'Internal Server Error' });
+            response.status(500).json({
+                error: 'Internal Server Error'
+            });
             return;
         }
-        response.json({ message: 'User created successfully', insertedId: result.insertId });
+        response.json({
+            message: 'User created successfully',
+            insertedId: result.insertId
+        });
     });
 });
 
