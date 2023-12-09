@@ -14,7 +14,7 @@ CREATE TABLE user (
 );
 
 -- Create Order table
-CREATE TABLE `order` (
+CREATE TABLE order (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES User(user_id)
@@ -48,13 +48,6 @@ CREATE TABLE dessert (
     item_id INT PRIMARY KEY,
     name VARCHAR(255),
     description VARCHAR(255)
-);
-
--- Create Review table
-CREATE TABLE review (
-	user_id INT PRIMARY KEY,
-    item_id INT PRIMARY KEY,
-    text VARCHAR(255)
 );
 
 -- Create Coupons table
