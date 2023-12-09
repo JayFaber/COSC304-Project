@@ -25,7 +25,7 @@ CREATE TABLE item (
     item_id INT AUTO_INCREMENT PRIMARY KEY,
     inventory INT,
     cost DECIMAL(10, 2),
-    image_name VARCHAR(255)
+    image_name LONGTEXT
 );
 
 -- Create Pizza table
