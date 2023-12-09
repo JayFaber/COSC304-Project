@@ -52,8 +52,9 @@ CREATE TABLE dessert (
 
 -- Create Review table
 CREATE TABLE review (
-	user_id INT PRIMARY KEY,
-    item_id INT PRIMARY KEY,
+	review_id INT AUTO_INCREMENT PRIMARY KEY,
+	user_id INT,
+    item_id INT,
     text VARCHAR(255)
 );
 
