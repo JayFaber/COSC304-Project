@@ -50,6 +50,13 @@ CREATE TABLE dessert (
     description VARCHAR(255)
 );
 
+-- Create Review table
+CREATE TABLE review (
+	user_id INT PRIMARY KEY,
+    item_id INT PRIMARY KEY,
+    text VARCHAR(255)
+);
+
 -- Create Coupons table
 CREATE TABLE coupons (
     coupon_id INT AUTO_INCREMENT PRIMARY KEY,
